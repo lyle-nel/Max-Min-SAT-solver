@@ -1,7 +1,7 @@
 # Max-Min-SAT-solver
-Solving Min and Max SAT problems through population based metaheuristics
+Solving Min and Max SAT problems through population based metaheuristics.
 
-This project includes some of my initial research and ideas around stochastic optimisation of SAT, unweighed MAX-SAT and unweighed MIN-SAT problems using population based metaheuristics. This project will very likely include duplicate work and rediscoveries since I was curious how far I could get without consulting the existing literature on SAT optimisation.
+This project includes some of my initial research and ideas around stochastic optimisation of SAT, unweighed MAX-SAT and unweighed MIN-SAT problems using population based metaheuristics. This project will very likely include duplicate work and rediscoveries since I was curious how far I could get without consulting the existing literature on SAT optimisation. It vexes me a bit that the work is incomplete but I have run out of personal time to continue work on this for the time being.
 
 ## Performance characteristics:
 One generally observes extremely rapid convergence to >99% clauses satisfied. The algorithm spends most of its time improving on the initial >99% convergence. Although convergence is faster for smaller instances, it performs nearly equally as well for larger instances.
@@ -36,3 +36,9 @@ When finding random max and min solutions in the form of a bitstring, where the 
 ### Marking fruitless regions to reduce exploration in those areas:
 The naive approach would be to keep a list of organisms already considered during the simulation, however, this is not very effective since the set of previously considered solutions grow quickly and it is less likely to be general enough to be effective.
 Alternatively, If we assume that SAT problems generally have a smooth profile as discussed above, we can explore promising densities for some time and if no progress is made, we can safely say that that specific truth assignment density is less likely to contain good solutions. For its implementation we can use a simple array populated with floating point values. The size of the array is proportional to our desired granularity we wish to have for representing regions. For example, an array with two elements would represent solutions with density [0.0-0.5) and (0.5-1.1] respectively. Each floating point value is chosen proportional to the number of bitstring permutations for that given density. When calculating the fitness, we multiply the final score with the floating point value for the organisms bitstring density. Over time we decrease the floating point value for the current density being evaluated. This has the effect of making solutions of a particular density seem less fit if it is used very often.
+
+ebc2a720957cf10090c78454e629c1a5346461ef6a9e36dd3c0bd9618f3bbf1fb9e2736829bff7b4278593d64640127ee45e720703459ed9c959a88167556aa8
+cdbfeea5d6c7c15c60c290c2798bec70804a0ba4a1e084d805de1a66348d4d9186f21a2d3e6a33627a324fa58c0ad8243234d739607d1fad2a4c25bede325bff
+4b57978078aaee6807acc4e646fab168cf09c3df761ee92dbcadd5145e2abf65b3c70f54d191525d479291485aef03883da0e9be809d288a1edb4c72c771242d
+62707f4e6d6e278a35c1a80dbe40e0779bcb1ba46e4963191e9628d992d3ccc7c4695a13a44215aad0181eae49984f4476bad3b143fcaadfd86fdd262b895ca1
+41fbe3cd40a9ca0cb8a8c097065ac5e29f8774328916cde4ee8af75129edc9b7d2228e82f8310eb7418383f558e28f336f94fc9446bf04c7ed0b9ffb966847a1
